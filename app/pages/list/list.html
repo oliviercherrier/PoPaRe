@@ -1,4 +1,9 @@
-<ion-header>
+<ion-tabs selectedIndex="0" tabsPlacement="top" tabsLayout="title-hide" light>
+    <ion-tab tabTitle="Nos activités" [root]="tabActivites" tabIcon="people"></ion-tab>
+    <ion-tab tabTitle="Mes activités" [root]="tabStatistics" tabIcon="person"></ion-tab>
+</ion-tabs>
+
+<!--<ion-header>
   <ion-navbar>
     <button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -22,3 +27,4 @@
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>
 </ion-content>
+-->
