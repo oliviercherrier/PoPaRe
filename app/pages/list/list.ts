@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {ViewController, Platform} from 'ionic-angular';
+import {ListOfFollowedActivitiesPage} from '../list-of-followed-activities/list-of-followed-activities';
+import {ListOfMyActivitiesPage} from '../list-of-my-activities/list-of-my-activities';
+import {StatisticsPage} from '../statistics/statistics';
 
 @Component({
   template: `
@@ -54,9 +57,10 @@ class TabTextPage {
 
 export class ListPage {
 
-  tabStatistics = TabTextPage;
-  tabActivites = TabTextPage2;
-
+  tabFollowedActivites = ListOfFollowedActivitiesPage;
+  tabMyActivites = ListOfMyActivitiesPage;
+  tabStatistics = StatisticsPage;
+  tabActivites = ListPage;
   constructor() {
   }
 }
