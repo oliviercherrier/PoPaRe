@@ -2,7 +2,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ViewController, Platform, Content, NavController, NavParams} from 'ionic-angular';
 import {StatisticsPage} from '../statistics/statistics';
-import {ListPage} from '../list/list';
+import {ListOfActivitiesPage} from '../list-of-activities/list-of-activities';
 
 
 @Component({
@@ -11,10 +11,9 @@ import {ListPage} from '../list/list';
 
 
 export class HomePage {
-  @ViewChild(Content) content: Content;
 
   tabStatistics = StatisticsPage;
-  tabActivites = ListPage;
+  tabActivites = ListOfActivitiesPage;
 
   constructor() {
     
