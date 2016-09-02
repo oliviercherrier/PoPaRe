@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {ItemDetailsPage} from '../item-details/item-details';
+
+import * as L from 'leaflet';
 /*
   Generated class for the ListOfActivitiesPage page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
+// declare var require: any
+
 @Component({
   templateUrl: 'build/pages/list-of-activities/list-of-activities.html',
 })
@@ -17,6 +22,7 @@ export class ListOfActivitiesPage {
   items: Array<{title: string, note: string, icon: string}>;
 
   constructor(public navCtrl: NavController, navParams: NavParams) {
+
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -31,6 +37,20 @@ export class ListOfActivitiesPage {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+    
+  }
+
+
+  ionViewLoaded (){
+    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+    L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(mymap);
+
+    var polygon = L.polygon([
+      [51.509, -0.08],
+      [51.503, -0.06],
+      [51.51, -0.047]
+    ]).addTo(mymap);
   }
 
   itemTapped(event, item) {

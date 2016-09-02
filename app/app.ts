@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HomePage} from './pages/home/home';
-import {ListPage} from './pages/list/list';
 import {StatisticsPage} from './pages/statistics/statistics'
 
 
@@ -25,7 +24,7 @@ class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Accueil', component: HomePage },
-      { title: 'Profile', component: ListPage }
+      { title: 'Profile', component: HomePage }
     ];
   }
 
