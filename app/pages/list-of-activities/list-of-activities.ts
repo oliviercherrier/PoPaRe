@@ -10,7 +10,7 @@ import * as L from 'leaflet';
   Ionic pages and navigation.
 */
 
-// declare var require: any
+declare var omnivore: any;
 
 @Component({
   templateUrl: 'build/pages/list-of-activities/list-of-activities.html',
@@ -51,6 +51,9 @@ export class ListOfActivitiesPage {
       [51.503, -0.06],
       [51.51, -0.047]
     ]).addTo(mymap);
+    
+    omnivore.gpx('tmp/gpx/Mollard.gpx').addTo(mymap);
+
   }
 
   itemTapped(event, item) {
