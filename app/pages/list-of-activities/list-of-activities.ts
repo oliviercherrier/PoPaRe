@@ -49,11 +49,16 @@ export class ListOfActivitiesPage {
 
   ionViewDidEnter (){
     // Populate each activity div with the related activity mapsCreate one div per activity to display
-    let my_map;
+    //let my_map;
+    // let runLayer;
     for (let activity of this.activities){
-      my_map =  L.map('map_' + activity.id).setView([51.505, -0.09], 13);
+      let my_map = L.map('map_' + activity.id).setView([51.505, -0.09], 13);
       L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(my_map);
-      omnivore.gpx('tmp/gpx/'+ activity.id + '.gpx').addTo(my_map);
+      let runLayer = omnivore.gpx(activity.fileName);
+      runLayer.on('ready', function() {
+          my_map.fitBounds(runLayer.getBounds());
+        });
+      runLayer.addTo(my_map);
     }
   }
 
