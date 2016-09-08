@@ -21,15 +21,37 @@
 </ion-header-bar>
 </ion-header>
 
-
-
 <ion-content padding>
-  <div id="mapid" style="height: 380px;"></div>
+  <ion-list>
+    <div id = "activities">
+      <div *ngFor="let activity of activities" id="act_{{activity.id}}" style="margin-bottom: 5px;">
+        <div id="top_{{activity.id}}">
+          <div style="float: left; display:flex">
+            <ion-icon primary style="font-size: 50px; margin: auto" name="happy"></ion-icon>
+            <div style="padding-left: 5px; margin: auto">
+              <div style= "font-size: 120%;">Sortie à vélo matinale - Col du {{activity.id}}</div>
+              <div>Olivier Cherrier</div>
+            </div>
+          </div>
+          <div style="clear: both; float:left; display: flex">
+            <div style="width: 40px; text-align:center">
+              <ion-icon primary style="font-size: 20px; margin: auto" name="bicycle"></ion-icon>
+            </div>
+            <span style=" padding-left: 5px; margin: auto">83.5 km</span>
+            <span style=" padding-left: 5px; margin: auto; margin-left: 10px">200 m</span>
+          </div>
+        </div>
+        <div id = "bottom_{{activity.id}}" style="overflow: auto; width: 100%">
+          <div id="map_{{activity.id}}" style="height: 250px;"></div>
+        </div>
+      </div>
+    </div>
+  </ion-list>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon name="{{item.icon}}" item-left></ion-icon>
       {{item.title}}
-      <div class="item-note" item-right>
+      <div  item-right>
         {{item.note}}
       </div>
     </button>

@@ -17,11 +17,18 @@ declare var omnivore: any;
 })
 export class ListOfActivitiesPage {
 
+  activities: Array<{fileName: string, id: string}>;
+
+
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
   constructor(public navCtrl: NavController, navParams: NavParams) {
+    // Create one div per activity to display
+    this.activities = [];
+    this.activities.push({fileName: 'tmp/gpx/Mollard.gpx', id:'Mollard'});
+    this.activities.push({fileName: 'tmp/gpx/Mollard.gpx', id:'Mollard2'});
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
@@ -37,23 +44,17 @@ export class ListOfActivitiesPage {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
-    
   }
 
 
-  ionViewLoaded (){
-    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
-    L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(mymap);
-
-    var polygon = L.polygon([
-      [51.509, -0.08],
-      [51.503, -0.06],
-      [51.51, -0.047]
-    ]).addTo(mymap);
-    
-    omnivore.gpx('tmp/gpx/Mollard.gpx').addTo(mymap);
-
+  ionViewDidEnter (){
+    // Populate each activity div with the related activity mapsCreate one div per activity to display
+    let my_map;
+    for (let activity of this.activities){
+      my_map =  L.map('map_' + activity.id).setView([51.505, -0.09], 13);
+      L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(my_map);
+      omnivore.gpx('tmp/gpx/'+ activity.id + '.gpx').addTo(my_map);
+    }
   }
 
   itemTapped(event, item) {
