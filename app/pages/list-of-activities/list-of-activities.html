@@ -27,7 +27,7 @@
       <div *ngFor="let activity of activities" id="act_{{activity.id}}" style="margin-bottom: 5px;">
         <div id="top_{{activity.id}}">
           <div style="float: left; display:flex">
-            <ion-icon primary style="font-size: 50px; margin: auto" name="happy"></ion-icon>
+            <ion-icon style="color: black; font-size: 50px; margin: auto" name="happy"></ion-icon>
             <div style="padding-left: 5px; margin: auto">
               <div style= "font-size: 120%;">Sortie à vélo matinale - Col du {{activity.id}}</div>
               <div>Olivier Cherrier</div>
@@ -35,7 +35,7 @@
           </div>
           <div style="clear: both; float:left; display: flex">
             <div style="width: 40px; text-align:center">
-              <ion-icon primary style="font-size: 20px; margin: auto" name="bicycle"></ion-icon>
+              <ion-icon style="color: black; font-size: 20px; margin: auto" name="bicycle"></ion-icon>
             </div>
             <span style=" padding-left: 5px; margin: auto">83.5 km</span>
             <span style=" padding-left: 5px; margin: auto; margin-left: 10px">200 m</span>
@@ -43,11 +43,9 @@
         </div>
         <div id = "bottom_{{activity.id}}" style="overflow: auto; width: 100%">
           <div id="map_{{activity.id}}" style="height: 250px;">
-            <div style="width:100%; position: absolute; z-index:1;  padding-left: 10px">
-              <div style="font-size: 18px; padding-top: 210px; text-align: left">
-                <ion-icon style="background-color: white; padding: 4px; border-radius: 8px" primary name="chatbubbles"><font size="3"> 0 </font></ion-icon>
-                <ion-icon style="background-color: white; padding: 4px; border-radius: 8px" primary name="thumbs-up"><font size="3"> 10 </font></ion-icon>
-              </div>
+            <div style="width:100%; position: absolute; z-index:1;  padding-left: 10px; font-size: 18px; padding-top: 210px; text-align: left">
+              <ion-icon style="background-color: white; padding: 4px; border-radius: 8px" primary name="chatbubbles"><font size="3"> 0 </font></ion-icon>
+              <ion-icon style="background-color: white; padding: 4px; border-radius: 8px" primary name="thumbs-up"><font size="3"> 10 </font></ion-icon>
             </div>
           </div>
         </div>
