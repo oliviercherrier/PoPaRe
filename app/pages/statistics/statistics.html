@@ -14,19 +14,14 @@
 </ion-header>
 <ion-content>
   <div id="topSection">
-    <div id = "mumSection" style="width: 50%; float: left; border-style:solid; text-align: center; border-style: none solid none none; border-color: blue; border-width: 1px">
-      <div style="width: 50%; float: left">
-        <img src="img/fatigue-example.png" width="75" style="padding: 5px"/>
+    <div id = "mumSection" style="display: flex;  width: 50%; float: left;  text-align: center; border-style: none solid none none; border-color: blue; border-width: 1px">
+      <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
+        <img src="img/fatigue-example.png" height= "100" width="100" style="padding-bottom: 15px"/>
       </div>
-      <div style="width: 50%; float: right; padding-right: 5px; padding-left: 5px">
-        <div style="display:flex; float: right">
-          <div style="margin: auto"><img src="img/female-body.jpg" width="38" style="padding: 5px"/></div>
-          <div style="margin: auto">42kg</div>
-          
-
-        </div>
-        
+      <div style="margin: auto; width: 70%; float: right; padding: 5px">
+          <chart [options]="options" (load)="saveInstance($event.context)" style="height: 120px; width: 100%"></chart>
       </div>
+      
       
     </div>
     <div id = "babySection" style="width: 50%; float: right;  text-align: center">
@@ -34,6 +29,6 @@
       <div style="">Section Bébé</div>
     </div>
   </div>
-  <chart [options]="options" (load)="saveInstance($event.context)"></chart>
+
   
 </ion-content>
