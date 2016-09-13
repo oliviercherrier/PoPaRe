@@ -49,19 +49,61 @@ export class StatisticsPage {
         {name: 'Poids', data: [77,78,76,75]}
       ]
     };
+
+    this.babyWeightChartOptions = {
+      title: {
+          text: undefined
+      },
+      chart: {
+          zoomType: 'x'
+      },
+      credits: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
+      },
+      xAxis: {
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',      
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineWidth: 0,
+      },
+      yAxis: {
+        max: 10, 
+        min: 8,
+        title: {
+            text: ''
+        }
+      },
+      series: [
+        {name: 'Poids', data: [8,9,10,10]}
+      ]
+    };
   }
 
  ionViewDidEnter(){
    var self = this;
     setTimeout(
-      function(){self.mumyWeightChart.reflow();},
+      function(){
+        self.mumyWeightChart.reflow(); 
+        self.babyWeightchart.reflow()
+      },
       1000
     );
+
+    
 
   }
 
   saveMumyWeightInstance(chartInstance) {
       this.mumyWeightChart = chartInstance;
+  }
+
+  saveBabyWeightInstance(chartInstance) {
+      this.babyWeightchart = chartInstance;
   }
 
   mumyWeightChart : HighchartsChartObject;

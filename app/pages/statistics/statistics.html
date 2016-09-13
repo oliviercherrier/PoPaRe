@@ -21,12 +21,15 @@
       <div style="margin: auto; width: 70%; float: right; padding: 5px">
           <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightInstance($event.context)" style="height: 120px; width: 100%"></chart>
       </div>
-      
-      
     </div>
-    <div id = "babySection" style="width: 50%; float: right;  text-align: center">
-      <img src="img/baby-icon.png" width="50"/>
-      <div style="">Section Bébé</div>
+
+    <div id = "babySection" style="display: flex;  width: 50%; float: right;  text-align: center">
+      <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
+        <img src="img/baby-icon.png" height= "100" width="100" style="padding-bottom: 15px"/>
+      </div>
+      <div style="margin: auto; width: 70%; float: right; padding: 5px">
+          <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightInstance($event.context)" style="height: 120px; width: 100%"></chart>
+      </div>
     </div>
   </div>
 
