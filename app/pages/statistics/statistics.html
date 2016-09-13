@@ -19,7 +19,7 @@
         <img src="img/fatigue-example.png" height= "100" width="100" style="padding-bottom: 15px"/>
       </div>
       <div style="margin: auto; width: 70%; float: right; padding: 5px">
-          <chart [options]="options" (load)="saveInstance($event.context)" style="height: 120px; width: 100%"></chart>
+          <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightInstance($event.context)" style="height: 120px; width: 100%"></chart>
       </div>
       
       
@@ -29,6 +29,7 @@
       <div style="">Section Bébé</div>
     </div>
   </div>
+
 
   
 </ion-content>

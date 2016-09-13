@@ -17,7 +17,7 @@ import { CHART_DIRECTIVES } from 'angular2-highcharts';
 export class StatisticsPage {
 
   constructor() {
-    this.options = {
+    this.mumyWeightChartOptions = {
       title: {
           text: undefined
       },
@@ -54,16 +54,20 @@ export class StatisticsPage {
  ionViewDidEnter(){
    var self = this;
     setTimeout(
-      function(){self.chart.reflow();},
+      function(){self.mumyWeightChart.reflow();},
       1000
     );
+
   }
 
-  saveInstance(chartInstance) {
-      this.chart = chartInstance;
+  saveMumyWeightInstance(chartInstance) {
+      this.mumyWeightChart = chartInstance;
   }
 
-  chart : HighchartsChartObject;
-  options: HighchartsOptions;
+  mumyWeightChart : HighchartsChartObject;
+  mumyWeightChartOptions: HighchartsOptions;
+
+  babyWeightchart : HighchartsChartObject;
+  babyWeightChartOptions: HighchartsOptions;
 
 }
