@@ -14,25 +14,40 @@
 </ion-header>
 <ion-content>
   <div id="topSection">
-    <div id = "mumSection" style="display: flex;  width: 50%; float: left;  text-align: center; border-style: none solid none none; border-color: blue; border-width: 1px">
-      <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
-        <img src="img/fatigue-example.png" height= "100" width="100" style="padding-bottom: 15px"/>
+    <div id = "mumSection" style="  width: 50%; float: left;  text-align: center; border-style: none groove none none; border-color: blue; border-width: 1px;">
+      <div style= "display: flex"> 
+        <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
+          <img src="img/fatigue-example.png" height= "100" width="100" style="padding-bottom: 15px"/>
+        </div>
+        <div style="margin: auto; width: 70%; float: right; padding: 5px">
+          <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightChart($event.context)" style="height: 120px; width: 100%"></chart>
+        </div>
       </div>
-      <div style="margin: auto; width: 70%; float: right; padding: 5px">
-          <chart [options]="mumyWeightChartOptions" (load)="saveMumyWeightInstance($event.context)" style="height: 120px; width: 100%"></chart>
+      <div style="width: 100%; text-align: left; padding-left: 5px; text-align: center; border-style: none  none groove none; border-color: blue; border-width: 1px;">
+        Badges Maman
       </div>
     </div>
 
-    <div id = "babySection" style="display: flex;  width: 50%; float: right;  text-align: center">
-      <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
-        <img src="img/baby-icon.png" height= "100" width="100" style="padding-bottom: 15px"/>
+    <div id = "babySection" style=" width: 50%; float: right;  text-align: center">
+      <div style= "display: flex"> 
+        <div style="margin: auto; width: 30%; float: left;  padding: 5px; text-align: center">
+          <img src="img/baby-icon.png" height= "100" width="100" style="padding-bottom: 15px"/>
+        </div>
+        <div style="margin: auto; width: 70%; float: right; padding: 5px">
+            <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightChart($event.context)" style="height: 120px; width: 100%"></chart>
+        </div>
       </div>
-      <div style="margin: auto; width: 70%; float: right; padding: 5px">
-          <chart [options]="babyWeightChartOptions" (load)="saveBabyWeightInstance($event.context)" style="height: 120px; width: 100%"></chart>
+      <div style="width: 100%; text-align: left; padding-left: 5px; text-align: center; border-style: none  none groove none; border-color: blue; border-width: 1px;">
+        Badges bébé
       </div>
     </div>
   </div>
-
+  <div id="middleSection" style="clear: left; width: 100%; padding: 10px;">
+    <span >
+      Ce mois ci <b>4h23</b> sur 8h:
+    </span> 
+    <chart [options]="mumyProgressBarOptions" (load)="saveMumyProgressBar($event.context)" style="height: 60px;"></chart>
+  </div>
 
   
 </ion-content>
