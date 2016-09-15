@@ -106,6 +106,23 @@ export class StatisticsPage {
           gridLineWidth: 0,
         },   
         yAxis: {
+          plotLines: [{ // Light air
+                value: Date.UTC(1970, 0, 1, 5, 0),
+                width: 2,
+                color: 'white',
+                zIndex: 5,
+                label: {
+                    rotation: 0,
+                    textAlign: 'center',
+                    y: 3,
+                    verticalAlign: 'bottom',
+                    text: "Aujourd'hui",
+                    style: {
+                        color: '#000000',
+                        
+                    }
+                }
+          }],
           type: 'datetime',
           tickInterval: 3600 * 1000, //1 hour
           min: 0,
@@ -149,10 +166,14 @@ export class StatisticsPage {
             }
           },
         },
-
+        tooltip: {
+            formatter: function () {
+                return 'Retard de 32 min';
+            }
+        },
         series: [
           { data: [Date.UTC(1970, 0, 1, 3,46)]},
-          { data: [Date.UTC(1970, 0, 1, 4,13)]
+          { data: [Date.UTC(1970, 0, 1, 4,14)]
         }]
     };
   }
