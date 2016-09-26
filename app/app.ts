@@ -1,8 +1,11 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, provide} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HomePage} from './pages/home/home';
 import {StatisticsPage} from './pages/statistics/statistics'
+import {AuthHttp, AuthConfig} from 'angular2-jwt';
+import {AuthService} from './services/auth/auth';
+import {Http} from '@angular/http';
 
 
 @Component({
@@ -44,4 +47,11 @@ class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(MyApp, [
+  provide(AuthHttp, {
+    useFactory: (http) => {
+      return new AuthHttp(new AuthConfig({noJwtError: true}), http);
+    },
+    deps: [Http]
+  }),
+  AuthService]);

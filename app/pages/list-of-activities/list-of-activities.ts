@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {ItemDetailsPage} from '../item-details/item-details';
+import {AuthService} from '../../services/auth/auth';
 
 import * as L from 'leaflet';
 /*
@@ -24,7 +25,7 @@ export class ListOfActivitiesPage {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, navParams: NavParams) {
+  constructor(private auth: AuthService, private navCtrl: NavController, navParams: NavParams) {
     // Create one div per activity to display
     this.activities = [];
     this.activities.push({fileName: 'tmp/gpx/Mollard.gpx', id:'Mollard'});

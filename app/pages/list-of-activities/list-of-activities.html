@@ -6,10 +6,9 @@
 -->
 <ion-header>
 <ion-navbar primary>
-    <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Flux d'activités</ion-title>
+    <button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>Mes activités</ion-title>
+    <ion-buttons end><button (click)="auth.logout()"><ion-icon item-right name="log-out"></ion-icon></button></ion-buttons>
 </ion-navbar>
 <ion-header-bar>
   <div style="width: 48%;float:left;border-right-style: solid; border-color: #387ef5; border-width: 1px"> 

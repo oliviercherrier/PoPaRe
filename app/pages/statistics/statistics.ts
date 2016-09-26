@@ -1,6 +1,8 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
-
+import {AuthService} from '../../services/auth/auth';
 import { CHART_DIRECTIVES } from 'angular2-highcharts';
+import {ListOfActivitiesPage} from '../list-of-activities/list-of-activities';
+
 /*
   Generated class for the StatisticsPage page.
 
@@ -16,8 +18,8 @@ import { CHART_DIRECTIVES } from 'angular2-highcharts';
 })
 
 export class StatisticsPage {
-
-  constructor() {
+  
+  constructor(private auth: AuthService) {
     this.mumyWeightChartOptions = {
       title: {
           text: undefined

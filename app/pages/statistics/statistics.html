@@ -6,10 +6,9 @@
 -->
 <ion-header>
 <ion-navbar primary>
-    <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Mes statistiques</ion-title>
+    <button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title> Mes statistiques</ion-title>
+    <ion-buttons end><button (click)="auth.logout()"><ion-icon item-right name="log-out"></ion-icon></button></ion-buttons>
 </ion-navbar>
 </ion-header>
 <ion-content>
@@ -106,6 +105,6 @@
       </tr>
     </table>
   </div>
-
   
-</ion-content>
+  
+  </ion-content>
