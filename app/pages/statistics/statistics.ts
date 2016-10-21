@@ -2,6 +2,9 @@ import {Component, ViewChild, ElementRef} from '@angular/core';
 import {AuthService} from '../../services/auth/auth';
 import { CHART_DIRECTIVES } from 'angular2-highcharts';
 import {ListOfActivitiesPage} from '../list-of-activities/list-of-activities';
+import {DataService} from '../../services/data/data-service';
+import {MyTypedItem} from '../../models/myTypedItem';
+import { CORE_DIRECTIVES } from '@angular/common';
 
 /*
   Generated class for the StatisticsPage page.
@@ -13,13 +16,15 @@ import {ListOfActivitiesPage} from '../list-of-activities/list-of-activities';
 
 @Component({
   selector: 'statistics-page',
-  directives: [CHART_DIRECTIVES],
+  directives: [CHART_DIRECTIVES, CORE_DIRECTIVES],
+  providers: [DataService],
   templateUrl: 'build/pages/statistics/statistics.html',
 })
 
 export class StatisticsPage {
-  
-  constructor(private auth: AuthService) {
+  public myItems: MyTypedItem [];
+
+  constructor(private auth: AuthService, private dataService: DataService) {
     this.mumyWeightChartOptions = {
       title: {
           text: undefined
@@ -180,8 +185,8 @@ export class StatisticsPage {
     };
   }
 
- ionViewDidEnter(){
-   var self = this;
+  ionViewDidEnter(){
+    var self = this;
     setTimeout(
       function(){
         self.mumyWeightChart.reflow(); 
@@ -191,8 +196,14 @@ export class StatisticsPage {
       1000
     );
 
-    
 
+    this.dataService
+      .GetAll()
+      .subscribe(
+        (data:MyTypedItem[]) => this.myItems = data,
+        error => console.log(error),
+        () => console.log(this.myItems)
+      );
   }
 
   saveMumyWeightChart(chartInstance) {
