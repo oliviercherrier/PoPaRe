@@ -23,8 +23,11 @@ import { CORE_DIRECTIVES } from '@angular/common';
 
 export class StatisticsPage {
   public myItems: MyTypedItem [];
+  public auth: AuthService;
 
-  constructor(private auth: AuthService, private dataService: DataService) {
+  constructor(public _auth: AuthService, private dataService: DataService) {
+    this.auth = _auth;
+
     this.mumyWeightChartOptions = {
       title: {
           text: undefined
@@ -197,13 +200,27 @@ export class StatisticsPage {
     );
 
 
+/*
+ (data) => this.myItems = data,
+
+ équivaut à
+ 
+ function (data){
+   this.myItems = data;
+ }.bind(this),
+ */
+    // Get data from REST API
     this.dataService
       .GetAll()
       .subscribe(
-        (data:MyTypedItem[]) => this.myItems = data,
+        (data) => { this.myItems = data } ,
         error => console.log(error),
         () => console.log(this.myItems)
       );
+
+    // Get profile User Name
+    console.log(this.auth.user["nickname"]);
+
   }
 
   saveMumyWeightChart(chartInstance) {
