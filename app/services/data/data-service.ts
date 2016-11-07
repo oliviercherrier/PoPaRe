@@ -1,6 +1,7 @@
 import { Injectable, Component } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'
+import {AuthHttp} from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import { MyTypedItem } from '../../models/myTypedItem';
 import { PopareApiVars } from '../../popareapi-variables';
@@ -10,15 +11,10 @@ import { PopareApiVars } from '../../popareapi-variables';
 export class DataService {
 
     private actionUrl: string;
-    private headers: Headers;
 
-    constructor(private _http: Http) {
+    constructor(private _http: AuthHttp) {
 
         this.actionUrl = PopareApiVars.POPARE_API_URL + 'todos/';
-
-        this.headers = new Headers();
-        this.headers.append('Content-Type', 'application/json');
-        this.headers.append('Accept', 'application/json');
     }
 
     public GetAll = (): Observable<MyTypedItem[]> => {
@@ -29,20 +25,20 @@ export class DataService {
 
     public GetSingle = (id: number): Observable<MyTypedItem> => {
         return this._http.get(this.actionUrl + id)
-            .map((response: Response) => <MyTypedItem>response.json())
+            .map((response: Response) => <MyTypedItem> response.json())
             .catch(this.handleError);
     }
 
     public Add = (itemName: string): Observable<MyTypedItem> => {
         let toAdd = JSON.stringify({ ItemName: itemName });
 
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
+        return this._http.post(this.actionUrl, toAdd)
             .map((response: Response) => <MyTypedItem>response.json())
             .catch(this.handleError);
     }
 
     public Update = (id: number, itemToUpdate: MyTypedItem): Observable<MyTypedItem> => {
-        return this._http.put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers })
+        return this._http.put(this.actionUrl + id, JSON.stringify(itemToUpdate))
             .map((response: Response) => <MyTypedItem>response.json())
             .catch(this.handleError);
     }
