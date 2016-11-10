@@ -5,6 +5,7 @@ import {HomePage} from './pages/home/home';
 import {StatisticsPage} from './pages/statistics/statistics'
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
 import {AuthService} from './services/auth/auth';
+import {RecordActivityPage} from './pages/record-activity/record-activity';
 import {Http} from '@angular/http';
 
 
@@ -27,7 +28,8 @@ class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Accueil', component: HomePage },
-      { title: 'Profile', component: HomePage }
+      { title: 'Profile', component: HomePage },
+      { title: 'Enregistrer activité', component: RecordActivityPage }
     ];
   }
 
